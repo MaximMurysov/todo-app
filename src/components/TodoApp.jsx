@@ -18,15 +18,21 @@ function TodoApp() {
       <div className={styles["todoApp-container"]}>
         <div className={styles["add-todo"]}>
           <input
+            className={styles.input}
             type="text"
             value={form}
             onChange={(e) => setForm(e.target.value)}
           />
-          <button onClick={addTodo}>Add</button>
+          <button className={styles["add-btn"]} onClick={addTodo}>
+            Add
+          </button>
         </div>
         <div className={styles["todos-card"]}>
           {todos.map((elem) => (
-            <div key={elem.id}>{elem.text}</div>
+            <div key={elem.id} className={styles["todo-elem"]}>
+              <input type="checkbox" />
+              {elem.text}
+            </div>
           ))}
         </div>
       </div>
