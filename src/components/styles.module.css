@@ -11,7 +11,7 @@
   background: #1e1e2e;
 }
 .todoApp-container {
-  width: 400px;
+  width: 500px;
   height: 300px;
   box-shadow:
     0 10px 25px -5px rgba(79, 114, 202, 0.2),
@@ -32,6 +32,7 @@
   padding: 5px;
   border-radius: 5px;
   border: none;
+  width: 300px;
 }
 .add-btn {
   width: 100px;
@@ -66,4 +67,5 @@
 }
 .active-btn {
   padding: 5px;
+  cursor: pointer;
 }
