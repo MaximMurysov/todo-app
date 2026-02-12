@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./styles.module.css";
 import TodoItem from "./TodoItem";
+import TodoForm from "./TodoForm";
 function TodoApp() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => {
+    const saveTodos = localStorage.getItem("todos");
+    return saveTodos ? JSON.parse(saveTodos) : [];
+  });
   const [form, setForm] = useState("");
   const addTodo = () => {
     if (form.trim() === "") return;
@@ -14,6 +18,10 @@ function TodoApp() {
     setTodos([newTodo, ...todos]);
     setForm("");
   };
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   const toggleTodo = (id) => {
     setTodos(
@@ -35,17 +43,7 @@ function TodoApp() {
   return (
     <div className={styles.todoApp}>
       <div className={styles["todoApp-container"]}>
-        <div className={styles["add-todo"]}>
-          <input
-            className={styles.input}
-            type="text"
-            value={form}
-            onChange={(e) => setForm(e.target.value)}
-          />
-          <button className={styles["add-btn"]} onClick={addTodo}>
-            Add
-          </button>
-        </div>
+        <TodoForm form={form} addTodo={addTodo} setForm={setForm} />
         <div className={styles["todos-card"]}>
           {todos.map((elem) => (
             <TodoItem
