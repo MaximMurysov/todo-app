@@ -50,3 +50,20 @@
   border-radius: 5px;
   gap: 10px;
 }
+.todo-elem {
+  display: flex;
+  justify-content: space-between;
+}
+.todo-value {
+  display: flex;
+  gap: 7px;
+  font-weight: bold;
+  align-items: center;
+}
+.button-group {
+  display: flex;
+  gap: 12px;
+}
+.active-btn {
+  padding: 5px;
+}
